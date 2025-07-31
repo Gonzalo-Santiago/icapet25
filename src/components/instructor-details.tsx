@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ScrollArea } from "./ui/scroll-area";
-import { Mail, Phone, GraduationCap, MapPin, Download, Briefcase } from "lucide-react";
+import { Mail, Phone, GraduationCap, MapPin, Download, Briefcase, FileArchive } from "lucide-react";
 
 interface InstructorDetailsProps {
   instructor: Instructor | null;
@@ -47,6 +47,27 @@ export function InstructorDetails({ instructor, sectors }: InstructorDetailsProp
     // For this prototype, we'll just log to the console.
     alert(`Iniciando descarga de: ${fileName}`);
   };
+
+  const handleDownloadAll = () => {
+    if (!instructor) return;
+    const documents = [
+        instructor.fotografia,
+        instructor.INE,
+        instructor.cedula,
+        instructor.RFC,
+        instructor.CURP,
+    ].filter(Boolean); // Filter out any empty/null values
+
+    if (documents.length > 0) {
+        // In a real app, you might zip these files and download them.
+        // For now, we'll just alert.
+        alert(`Iniciando descarga de ${documents.length} documentos...`);
+        documents.forEach(doc => console.log(`Descargando ${doc}`));
+    } else {
+        alert('No hay documentos para descargar.');
+    }
+  };
+
 
   return (
     <Card className="sticky top-20">
@@ -91,7 +112,12 @@ export function InstructorDetails({ instructor, sectors }: InstructorDetailsProp
             </div>
 
              <div className="space-y-4">
-                <h4 className="font-semibold">Documentación</h4>
+                <div className="flex justify-between items-center">
+                    <h4 className="font-semibold">Documentación</h4>
+                    <Button variant="secondary" size="sm" onClick={handleDownloadAll}>
+                        <FileArchive /> Descargar Todo
+                    </Button>
+                </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 pt-2">
                     <Button variant="outline" size="sm" onClick={() => handleDownload(instructor.fotografia)}>
                         <Download /> Fotografía
