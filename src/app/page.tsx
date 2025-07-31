@@ -106,33 +106,29 @@ export default function Home() {
             </h1>
         </div>
       </header>
-      <main className="flex-grow container mx-auto p-4">
+      <main className="flex-grow container mx-auto p-4 space-y-6">
+        <div>
+          <InstructorFilters
+            filters={filters}
+            onFilterChange={handleFilterChange}
+            campos={campos}
+            especialidades={especialidades}
+            cursos={cursos}
+          />
+        </div>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
-          <div className="lg:col-span-3">
-             <InstructorFilters
-              filters={filters}
-              onFilterChange={handleFilterChange}
-              campos={campos}
-              especialidades={especialidades}
-              cursos={cursos}
-            />
+          <div className="lg:col-span-5">
+              <InstructorList 
+                  instructors={filteredInstructors}
+                  onSelectInstructor={setSelectedInstructorId}
+                  selectedInstructorId={selectedInstructorId}
+              />
           </div>
-          <div className="lg:col-span-9">
-            <div className="grid grid-cols-1 xl:grid-cols-12 gap-6">
-                <div className="xl:col-span-5">
-                    <InstructorList 
-                        instructors={filteredInstructors}
-                        onSelectInstructor={setSelectedInstructorId}
-                        selectedInstructorId={selectedInstructorId}
-                    />
-                </div>
-                <div className="xl:col-span-7">
-                    <InstructorDetails 
-                        instructor={selectedInstructor}
-                        sectors={selectedInstructorSectors}
-                    />
-                </div>
-            </div>
+          <div className="lg:col-span-7">
+              <InstructorDetails 
+                  instructor={selectedInstructor}
+                  sectors={selectedInstructorSectors}
+              />
           </div>
         </div>
       </main>
