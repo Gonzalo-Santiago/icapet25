@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ScrollArea } from "./ui/scroll-area";
-import { Mail, Phone, GraduationCap, MapPin, Download, Briefcase, FileText, UserSquare, Fingerprint } from "lucide-react";
+import { Mail, Phone, GraduationCap, MapPin, Download, Briefcase } from "lucide-react";
 
 interface InstructorDetailsProps {
   instructor: Instructor | null;
@@ -92,21 +92,7 @@ export function InstructorDetails({ instructor, sectors }: InstructorDetailsProp
 
              <div className="space-y-4">
                 <h4 className="font-semibold">Documentación</h4>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
-                    <div className="flex items-center gap-3">
-                        <UserSquare className="h-4 w-4 text-muted-foreground" />
-                        <span>RFC: {instructor.RFC}</span>
-                    </div>
-                     <div className="flex items-center gap-3">
-                        <Fingerprint className="h-4 w-4 text-muted-foreground" />
-                        <span>CURP: {instructor.CURP}</span>
-                    </div>
-                     <div className="flex items-center gap-3">
-                        <FileText className="h-4 w-4 text-muted-foreground" />
-                        <span>Cédula: {instructor.cedula}</span>
-                    </div>
-                </div>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-2">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 pt-2">
                     <Button variant="outline" size="sm" onClick={() => handleDownload(instructor.fotografia)}>
                         <Download /> Fotografía
                     </Button>
@@ -115,6 +101,12 @@ export function InstructorDetails({ instructor, sectors }: InstructorDetailsProp
                     </Button>
                      <Button variant="outline" size="sm" onClick={() => handleDownload(instructor.cedula)}>
                         <Download /> Cédula
+                    </Button>
+                    <Button variant="outline" size="sm" onClick={() => handleDownload(instructor.RFC)}>
+                        <Download /> RFC
+                    </Button>
+                    <Button variant="outline" size="sm" onClick={() => handleDownload(instructor.CURP)}>
+                        <Download /> CURP
                     </Button>
                 </div>
             </div>
