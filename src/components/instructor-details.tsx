@@ -3,10 +3,11 @@
 import type { Instructor, Sector } from "@/types";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ScrollArea } from "./ui/scroll-area";
-import { Mail, Phone, GraduationCap, MapPin } from "lucide-react";
+import { Mail, Phone, GraduationCap, MapPin, Download, Briefcase, FileText, UserSquare, Fingerprint } from "lucide-react";
 
 interface InstructorDetailsProps {
   instructor: Instructor | null;
@@ -40,6 +41,13 @@ export function InstructorDetails({ instructor, sectors }: InstructorDetailsProp
     return acc;
   }, {} as Record<string, Record<string, Sector[]>>);
 
+  const handleDownload = (fileName?: string) => {
+    if(!fileName) return;
+    // In a real app, this would trigger a file download.
+    // For this prototype, we'll just log to the console.
+    alert(`Iniciando descarga de: ${fileName}`);
+  };
+
   return (
     <Card className="sticky top-20">
       <ScrollArea className="h-[calc(100vh-8.5rem)]">
@@ -55,6 +63,18 @@ export function InstructorDetails({ instructor, sectors }: InstructorDetailsProp
 
         <CardContent className="px-6 space-y-6">
             <div className="space-y-4">
+                <h4 className="font-semibold">Información Académica</h4>
+                 <div className="flex items-center gap-3 text-sm">
+                    <GraduationCap className="h-4 w-4 text-muted-foreground" />
+                    <span><span className="font-medium">Nivel:</span> {instructor.nivel_estudio}</span>
+                </div>
+                <div className="flex items-center gap-3 text-sm">
+                    <Briefcase className="h-4 w-4 text-muted-foreground" />
+                    <span><span className="font-medium">Área:</span> {instructor.area_estudio}</span>
+                </div>
+            </div>
+
+            <div className="space-y-4">
                 <h4 className="font-semibold">Información de Contacto</h4>
                 <div className="flex items-center gap-3 text-sm">
                     <Mail className="h-4 w-4 text-muted-foreground" />
@@ -69,6 +89,36 @@ export function InstructorDetails({ instructor, sectors }: InstructorDetailsProp
                     <span>{instructor.residencia}</span>
                 </div>
             </div>
+
+             <div className="space-y-4">
+                <h4 className="font-semibold">Documentación</h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
+                    <div className="flex items-center gap-3">
+                        <UserSquare className="h-4 w-4 text-muted-foreground" />
+                        <span>RFC: {instructor.RFC}</span>
+                    </div>
+                     <div className="flex items-center gap-3">
+                        <Fingerprint className="h-4 w-4 text-muted-foreground" />
+                        <span>CURP: {instructor.CURP}</span>
+                    </div>
+                     <div className="flex items-center gap-3">
+                        <FileText className="h-4 w-4 text-muted-foreground" />
+                        <span>Cédula: {instructor.cedula}</span>
+                    </div>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 pt-2">
+                    <Button variant="outline" size="sm" onClick={() => handleDownload(instructor.fotografia)}>
+                        <Download /> Fotografía
+                    </Button>
+                    <Button variant="outline" size="sm" onClick={() => handleDownload(instructor.INE)}>
+                        <Download /> INE
+                    </Button>
+                     <Button variant="outline" size="sm" onClick={() => handleDownload(instructor.cedula)}>
+                        <Download /> Cédula
+                    </Button>
+                </div>
+            </div>
+
 
              {instructor.comentario && (
                 <div className="space-y-2">

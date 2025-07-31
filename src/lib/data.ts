@@ -38,7 +38,12 @@ export const allInstructors: Instructor[] = [
         status: 'Formal',
         UDC: 'UDC01',
         residencia: 'Oaxaca de Juárez',
-        comentario: 'Instructor con amplia experiencia en cursos administrativos y de desarrollo humano.'
+        comentario: 'Instructor con amplia experiencia en cursos administrativos y de desarrollo humano.',
+        RFC: 'PEGO880101ABC',
+        CURP: 'PEGO880101HOCLN01',
+        cedula: '1234567',
+        INE: 'ine_juan.pdf',
+        fotografia: 'foto_juan.jpg'
     },
     {
         id: 2,
@@ -52,7 +57,12 @@ export const allInstructors: Instructor[] = [
         status: 'Formal',
         UDC: 'UDC02',
         residencia: 'Salina Cruz',
-        comentario: 'Especialista en software de ofimática y lenguajes de programación. Apasionada por la enseñanza de la tecnología.'
+        comentario: 'Especialista en software de ofimática y lenguajes de programación. Apasionada por la enseñanza de la tecnología.',
+        RFC: 'LOHM900202XYZ',
+        CURP: 'LOHM900202MOCLN02',
+        cedula: '7654321',
+        INE: 'ine_maria.pdf',
+        fotografia: 'foto_maria.jpg'
     },
     {
         id: 3,
@@ -66,7 +76,12 @@ export const allInstructors: Instructor[] = [
         status: 'Informal',
         UDC: 'UDC03',
         residencia: 'Huatulco',
-        comentario: 'Chef profesional y experto en hospitalidad, enfocado en la riqueza de la cocina oaxaqueña.'
+        comentario: 'Chef profesional y experto en hospitalidad, enfocado en la riqueza de la cocina oaxaqueña.',
+        RFC: 'MAGC850303UVW',
+        CURP: 'MAGC850303HOCLN03',
+        cedula: '8889900',
+        INE: 'ine_carlos.pdf',
+        fotografia: 'foto_carlos.jpg'
     },
     {
         id: 4,
@@ -80,7 +95,12 @@ export const allInstructors: Instructor[] = [
         status: 'Formal',
         UDC: 'UDC01',
         residencia: 'Oaxaca de Juárez',
-        comentario: 'Paramédico certificada con experiencia en respuesta a emergencias y capacitación de brigadas.'
+        comentario: 'Paramédico certificada con experiencia en respuesta a emergencias y capacitación de brigadas.',
+        RFC: 'RACA920404RST',
+        CURP: 'RACA920404MOCLN04',
+        cedula: '1122334',
+        INE: 'ine_ana.pdf',
+        fotografia: 'foto_ana.jpg'
     }
 ];
 

@@ -10,11 +10,11 @@ export interface Instructor {
     nombre: string;
     apellido_paterno: string;
     apellido_materno: string;
-    RFC?: any;
-    CEDULA?: any;
-    INE?: any;
-    FOTOGRAFIA?: any;
-    CURP?: any;
+    RFC: string;
+    CURP: string;
+    cedula: string;
+    INE: string;
+    fotografia: string;
     telefono: string;
     email: string;
     nivel_estudio: string;
