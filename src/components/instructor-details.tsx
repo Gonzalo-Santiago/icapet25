@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { ScrollArea } from "./ui/scroll-area";
-import { Mail, Phone, GraduationCap, MapPin, Download, Briefcase, FileArchive } from "lucide-react";
+import { Mail, Phone, GraduationCap, MapPin, Download, Briefcase, FileArchive, Building } from "lucide-react";
 
 interface InstructorDetailsProps {
   instructor: Instructor | null;
@@ -97,6 +97,10 @@ export function InstructorDetails({ instructor, sectors }: InstructorDetailsProp
 
             <div className="space-y-4">
                 <h4 className="font-semibold">Información de Contacto</h4>
+                <div className="flex items-center gap-3 text-sm">
+                    <Building className="h-4 w-4 text-muted-foreground" />
+                    <span><span className="font-medium">UDC:</span> {instructor.UDC}</span>
+                </div>
                 <div className="flex items-center gap-3 text-sm">
                     <Mail className="h-4 w-4 text-muted-foreground" />
                     <a href={`mailto:${instructor.email}`} className="text-primary hover:underline">{instructor.email}</a>
